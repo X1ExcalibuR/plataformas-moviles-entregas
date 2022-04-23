@@ -1,0 +1,88 @@
+@media all{
+    body{
+        background-color: #ddccaa;
+    }
+}
+
+@media print{
+    body{
+        background-color: white;
+    }
+}
+
+@media screen{
+    .container{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (min-width: 401px){
+    p{
+        font-size:1.3em ;
+    }
+    .container{
+        width: 390px;
+    }
+}
+
+@media (max-width: 299px){
+    h1{
+        text-align: center;
+    }
+}
+
+@media (min-width: 200px) and (max-width: 400px){
+    .container{
+        width: 80%;
+    }
+}
+
+@media (max-width: 199px){
+    .container{
+        width: 90%;
+    }
+}
+
+@media not(color){
+    #wikipedia-logo{
+        visibility: hidden;
+    }
+}
+
+@media (hover: hover){
+    blockquote{
+        background-color: #ccddaa;
+    }
+}
+
+/*
+Compatibilidad de navegadores con media hover:
+
+Desktop:
+Chrome: 38
+Edge: 12
+Firefox: 64
+Internet Explorer: No compatible
+Opera: 28
+Safari: 9
+
+Mobile:
+Webwiew Android: 38
+Chrome Android: 50
+Firefox for Andriod: 64
+Opera for Android: 28
+Safari on iOS: 9
+Samsung Internet: 5.0
+*/
+
+@media (aspect-ratio: 1/1){
+    figure {
+        width: 80%;
+        margin: 5px auto;
+        padding: 5px;
+        border: 1px solid #999;
+        border-radius: 10px;
+    }
+}
