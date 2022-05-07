@@ -1,0 +1,97 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	font-weight: 500;
+}
+
+body {
+	background-color: rgba(44, 45, 52, 1);
+}
+
+/*----------*/
+
+header {
+	background: linear-gradient(90deg,
+			rgb(202, 159, 119) 10%,
+			rgb(203, 193, 104) 25%,
+			rgb(163, 197, 91) 40%,
+			rgb(118, 209, 121) 60%,
+			rgb(133, 227, 193) 75%,
+			rgb(121, 191, 229) 90%);
+	min-height: 80px;
+	width: 100%;
+	display: inline-block;
+}
+
+#cabizq h1 {
+	color: rgb(255, 255, 255);
+	padding-top: 15px;
+	text-align: center;
+}
+
+/*----------*/
+
+section {
+	width: 95%;
+	margin-top: 80px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+.borde {
+	background: linear-gradient(90deg,
+			rgb(202, 159, 119) 10%,
+			rgb(203, 193, 104) 25%,
+			rgb(163, 197, 91) 40%,
+			rgb(118, 209, 121) 60%,
+			rgb(133, 227, 193) 75%,
+			rgb(121, 191, 229) 90%);
+	width: 30%;
+	height: auto;
+	margin-bottom: 40px;
+	margin-inline: 1%;
+	border-radius: 20px 20px 20px 20px;
+	padding: 5px;
+	display: inline-block;
+}
+
+@media (max-width: 1024px) {
+	.borde {
+		width: 44.8%;
+	}
+}
+
+@media (max-width: 425px) {
+	.borde {
+		width: 95%;
+	}
+}
+
+.contenido {
+	background-color: rgb(255, 255, 255);
+	color: black;
+	width: 100%;
+	height: 100%;
+	border-radius: 20px 20px 20px 20px;
+	transition: background-color 0.5s;
+	transition: color 0.5s;
+}
+
+.contenido:hover {
+	background-color: rgba(44, 45, 52, 1);
+	color: rgb(255, 255, 255);
+}
+
+.contenido h2 {
+	width: 20px;
+	margin: auto;
+	padding: 30px 0px;
+	word-wrap: break-word;
+	text-align: center;
+}
