@@ -1,0 +1,12 @@
+body {
+    background: rgba(0, 0, 0, 0.8) url(../IMG/IMG-Fondo\ 2.jpg) no-repeat center center fixed;
+    background-size: cover;
+    background-blend-mode: darken;
+}
+
+.color1 {
+    background: linear-gradient(180deg,
+            rgb(14, 44, 83) 10%,
+            rgb(30, 114, 187) 90%
+    );
+}
