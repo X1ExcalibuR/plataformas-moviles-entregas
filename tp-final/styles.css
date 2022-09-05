@@ -30,3 +30,9 @@ body {
 .link-unline:hover:after {
     width: 80%;
 }
+
+.img-center {
+    height: 180px;
+    object-fit: cover;
+    object-position: 0% 25%;
+}
