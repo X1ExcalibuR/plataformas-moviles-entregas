@@ -6,8 +6,7 @@ class Personaje{
         fetch(URL)
         .then(response => response.json())
         .then(data => Personaje.renderPersonajeData(data))
-        .catch(error => alert(error));
-        
+        .catch(error => alert(error));   
     }
 
     static renderPersonajeData(data){
