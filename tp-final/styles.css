@@ -31,8 +31,14 @@ body {
     width: 80%;
 }
 
-.img-center {
-    height: 180px;
+.img-center-weapon {
+    height: 240px;
     object-fit: cover;
-    object-position: 0% 25%;
+    object-position: 50% 0%;
+}
+
+.img-center-character {
+    height: 210px;
+    object-fit: cover;
+    object-position: 50% 25%;
 }
