@@ -17,73 +17,90 @@ class Artefacto {
             fetch(URL)
             .then(response => response.json())
             .then(artefacto => {
+                console.log(artefacto)
                 let contenedor = document.querySelector('#container-artefactos');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
-                    <div class="col accordion accordion-flush">
-                        <div class="card h-100">
-                            <img src="https://api.genshin.dev/artifacts/${id}/flower-of-life" class="card-img-top img-fluid img-center bg-light" alt="">
-                            <div class="card-header color1 text-light">
-                                <h5 class="card-title text-center">
-                                    ${artefacto.name}
+                    <div class="col">
+                        <div class="card">
+                            <button type="button" class="btn color1 text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
+                                <img src="https://api.genshin.dev/artifacts/${id}/flower-of-life" alt="" class="card-img img-fluid img-center-character">
+                                <h5 class="card-title text-center mt-2">
+                                    ${artefacto["name"]}
                                 </h5>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading${key}">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-${key}" aria-expanded="false" aria-controls="flush-${key}">
-                                    Datos: 
-                                </button>
-                                </h2>
-                                <div id="flush-${key}" class="accordion-collapse collapse" aria-labelledby="flush-heading${key}" data-bs-parent="#accordionFlushExample">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="flush-${key}" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header color1">
+                                    <h5 class="modal-title text-light">
+                                        ${artefacto["name"]}
+                                    </h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <b>
                                                 Rareza maxima:
                                             </b>
-                                            ${artefacto.max_rarity}
+                                            ${artefacto["max_rarity"]}
+                                            <i class="bi bi-stars"></i>
                                         </li>
                                         <li class="list-group-item">
                                             <b>
                                                 Bonus de 2 piezas:
                                             </b>
-                                            ${artefacto.piece_bonus}
+                                            ${artefacto["2-piece_bonus"]}
                                         </li>
                                         <li class="list-group-item">
                                             <b>
                                                 Bonus de 4 piezas:
                                             </b>
-                                            ${artefacto.piece_bonus}
+                                            ${artefacto["4-piece_bonus"]}
                                         </li>
                                         <li class="list-group-item text-center">
                                             <b>
-                                                Otros artefactos
+                                                Set de artefactos
                                             </b>
                                         </li>
-                                        <li class="list-group-item text-center text-decoration-underline">
-                                            <img src="https://api.genshin.dev/artifacts/${id}/flower-of-life" class="img-fluid img-center bg-light" alt="">
-                                            Flower of Life
+                                        <li class="list-group-item">
+                                            <b>
+                                                Flower of Life
+                                            </b>
+                                            <img src="https://api.genshin.dev/artifacts/${id}/flower-of-life" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
-                                        <li class="list-group-item text-center text-decoration-underline">
-                                            <img src="https://api.genshin.dev/artifacts/${id}/plume-of-death" class="img-fluid img-center bg-light" alt="">
-                                            Plume of Death
+                                        <li class="list-group-item">
+                                            <b>
+                                                Plume of Death
+                                            </b>
+                                            <img src="https://api.genshin.dev/artifacts/${id}/plume-of-death" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
-                                        <li class="list-group-item text-center text-decoration-underline">
-                                            <img src="https://api.genshin.dev/artifacts/${id}/sands-of-eon" class="img-fluid img-center bg-light" alt="">
-                                            Sands of Eon
+                                        <li class="list-group-item">
+                                            <b>
+                                                Sands of Eon
+                                            </b>
+                                            <img src="https://api.genshin.dev/artifacts/${id}/sands-of-eon" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
-                                        <li class="list-group-item text-center text-decoration-underline">
-                                            <img src="https://api.genshin.dev/artifacts/${id}/goblet-of-eonothem" class="img-fluid img-center bg-light" alt="">
-                                            Goblet of Eonothen
+                                        <li class="list-group-item">
+                                            <b>
+                                                Goblet of Eonothen
+                                            </b>
+                                            <img src="https://api.genshin.dev/artifacts/${id}/goblet-of-eonothem" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
-                                        <li class="list-group-item text-center text-decoration-underline">
-                                            <img src="https://api.genshin.dev/artifacts/${id}/circlet-of-logos" class="img-fluid img-center bg-light" alt="">
-                                            Circlet of Logos
+                                        <li class="list-group-item">
+                                            <b>
+                                                Circlet of Logos
+                                            </b>
+                                            <img src="https://api.genshin.dev/artifacts/${id}/circlet-of-logos" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 `;
                 contenedor.appendChild(elemento)
             })

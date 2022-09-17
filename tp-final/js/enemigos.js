@@ -20,27 +20,57 @@ class Enemigo {
                 let contenedor = document.querySelector('#container-enemigos');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
-                    <div class="col accordion accordion-flush">
-                        <div class="card h-100">
-                            <img src="https://api.genshin.dev/enemies/${id}/icon" class="card-img-top img-fluid img-center bg-light" alt="">
-                            <div class="card-header color1 text-light">
-                                <h5 class="card-title text-center">
-                                    ${enemigo.name}
+                    <div class="col">
+                        <div class="card">
+                            <button type="button" class="btn color1 text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
+                                <img src="https://api.genshin.dev/enemies/${id}/icon" alt="" class="card-img img-fluid">
+                                <h5 class="card-title text-center mt-2">
+                                    ${enemigo["name"]}
                                 </h5>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading${key}">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-${key}" aria-expanded="false" aria-controls="flush-${key}">
-                                    Datos: 
-                                </button>
-                                </h2>
-                                <div id="flush-${key}" class="accordion-collapse collapse" aria-labelledby="flush-heading${key}" data-bs-parent="#accordionFlushExample">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="flush-${key}" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header color1">
+                                    <h5 class="modal-title text-light">
+                                        ${enemigo["name"]}
+                                    </h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <b>
-                                                Reacciones:
+                                                Descripción:
                                             </b>
-                                            
+                                            ${enemigo["description"]}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Región:
+                                            </b>
+                                            ${enemigo["region"]}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Tipo:
+                                            </b>
+                                            ${enemigo["type"]}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Familia:
+                                            </b>
+                                            ${enemigo["family"]}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Recompensa:
+                                            </b>
+                                            ${enemigo["mora-gained"]}
+                                            <i class="bi bi-coin"></i>
                                         </li>
                                     </ul>
                                 </div>

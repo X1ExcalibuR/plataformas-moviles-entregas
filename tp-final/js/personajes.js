@@ -20,60 +20,65 @@ class Personaje{
                 let contenedor = document.querySelector('#container-personajes');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
-                    <div class="col accordion accordion-flush">
-                        <div class="card h-100">
-                            <img src="https://api.genshin.dev/characters/${id}/card" class="card-img-top img-fluid img-center bg-light" alt="">
-                            <div class="card-header color1 text-light">
-                                <h5 class="card-title text-center">
-                                    ${personaje.name}
+                    <div class="col">
+                        <div class="card">
+                            <button type="button" class="btn color1 text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
+                                <img src="https://api.genshin.dev/characters/${id}/icon-big" alt="" class="card-img img-fluid img-center-character">
+                                <h5 class="card-title text-center mt-2">
+                                    ${personaje["name"]}
                                 </h5>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading${key}">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-${key}" aria-expanded="false" aria-controls="flush-${key}">
-                                    Descripción: 
-                                </button>
-                                </h2>
-                                <div id="flush-${key}" class="accordion-collapse collapse" aria-labelledby="flush-heading${key}" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        ${personaje.description}
-                                    </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="flush-${key}" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header color1">
+                                    <h5 class="modal-title text-light">
+                                        ${personaje["name"]}
+                                    </h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="https://api.genshin.dev/characters/${id}/card" alt="" class="img-fluid w-100 rounded">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <b>
                                                 Visión:
                                             </b>
-                                            ${personaje.vision}
+                                            ${personaje["vision"]}
                                         </li>
                                         <li class="list-group-item">
                                             <b>
                                                 Arma:
                                             </b>
-                                            ${personaje.weapon}
+                                            ${personaje["weapon"]}
                                         </li>
                                         <li class="list-group-item">
                                             <b>
                                                 Nación:
                                             </b>
-                                            ${personaje.nation}
+                                            ${personaje["nation"]}
                                         </li>
                                         <li class="list-group-item">
                                             <b>
                                                 Afilación:
                                             </b>
-                                            ${personaje.affiliation}
+                                            ${personaje["affiliation"]}
                                         </li>
-                                        <li class="list-group-item">
+                                        <li class="list-group-item align-middle">
                                             <b>
                                                 Constelación:
                                             </b>
-                                            ${personaje.constellation}
+                                            ${personaje["constellation"]}
+                                            <img src="https://api.genshin.dev/characters/${id}/constellation" alt="" class="img-fluid w-25 float-end rounded-4">
                                         </li>
                                         <li class="list-group-item">
                                             <b>
                                                 Rareza:
                                             </b>
-                                            ${personaje.rarity} estrellas
+                                            ${personaje["rarity"]}
+                                            <i class="bi bi-stars"></i>
                                         </li>
                                     </ul>
                                 </div>

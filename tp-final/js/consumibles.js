@@ -2,7 +2,7 @@ class Consumible {
     constructor(){}
 
     static fetchFromAPI(){
-        let URL = 'https://api.genshin.dev/consumables/food';
+        let URL = 'https://api.genshin.dev/consumables/';
         fetch(URL)
         .then(response => response.json())
         .then(data => Consumible.renderConsumibleData(data))
@@ -13,11 +13,11 @@ class Consumible {
         let consumible = data;
 
         consumible.forEach((id, key) => {
-            let URL = `https://api.genshin.dev/consumables/food/${id}`;
+            let URL = `https://api.genshin.dev/consumables/${id}`;
             fetch(URL)
             .then(response => response.json())
             .then(consumible => {
-                console.log(id)
+                console.log(consumible)
                 let contenedor = document.querySelector('#container-consumibles');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
@@ -25,7 +25,7 @@ class Consumible {
                         <div class="card h-100">
                             <div class="card-header color1 text-light">
                                 <h5 class="card-title text-center">
-                                    ${consumible.name}
+                                    ${consumible["name"]}
                                 </h5>
                             </div>
                             <div class="accordion-item">
@@ -40,6 +40,7 @@ class Consumible {
                                             <b>
                                                 Rareza maxima:
                                             </b>
+                                            ${consumible["name"]}
                                         </li>
                                     </ul>
                                 </div>

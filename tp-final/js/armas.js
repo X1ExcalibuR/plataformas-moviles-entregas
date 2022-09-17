@@ -20,69 +20,75 @@ class Arma {
                 let contenedor = document.querySelector('#container-armas');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
-                    <div class="col accordion accordion-flush">
-                        <div class="card h-100">
-                            <img src="https://api.genshin.dev/weapons/${id}/icon" class="card-img-top img-fluid img-center bg-light" alt="">
-                            <div class="card-header color1 text-light">
-                                <h5 class="card-title text-center">
-                                    ${arma.name}
+                <div class="col">
+                    <div class="card">
+                        <button type="button" class="btn color1 text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
+                            <img src="https://api.genshin.dev/weapons/${id}/icon" alt="" class="card-img img-fluid img-center-weapon">
+                            <h5 class="card-title text-center mt-2">
+                                ${arma["name"]}
+                            </h5>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal fade" id="flush-${key}" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header color1">
+                                <h5 class="modal-title text-light">
+                                    ${arma["name"]}
                                 </h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="flush-heading${key}">
-                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-${key}" aria-expanded="false" aria-controls="flush-${key}">
-                                    Datos: 
-                                </button>
-                                </h2>
-                                <div id="flush-${key}" class="accordion-collapse collapse" aria-labelledby="flush-heading${key}" data-bs-parent="#accordionFlushExample">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            <b>
-                                                Tipo:
-                                            </b>
-                                            ${arma.type}
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>
-                                                Rareza:
-                                            </b>
-                                            ${arma.rarity} estrellas
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>
-                                                Ataque base:
-                                            </b>
-                                            ${arma.baseAttack}
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>
-                                                Secundario:
-                                            </b>
-                                            ${arma.subStat}
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>
-                                                Ubicación:
-                                            </b>
-                                            ${arma.location}
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>
-                                                Pasiva:
-                                            </b>
-                                            ${arma.passiveName}
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>
-                                                Descripción:
-                                            </b>
-                                            ${arma.passiveDesc}
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="modal-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <b>
+                                            Tipo:
+                                        </b>
+                                        ${arma["type"]}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>
+                                            Rareza:
+                                        </b>
+                                        ${arma["rarity"]}
+                                        <i class="bi bi-stars"></i>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>
+                                            Ataque base:
+                                        </b>
+                                        ${arma["baseAttack"]}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>
+                                            Secundario:
+                                        </b>
+                                        ${arma["subStat"]}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>
+                                            Ubicación:
+                                        </b>
+                                        ${arma["location"]}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>
+                                            Pasiva:
+                                        </b>
+                                        ${arma["passiveName"]}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>
+                                            Descripción:
+                                        </b>
+                                        ${arma["passiveDesc"]}
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
+                </div>
                 `;
                 contenedor.appendChild(elemento)
             })
