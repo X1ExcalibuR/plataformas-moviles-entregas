@@ -22,7 +22,7 @@ class Enemigo {
                 elemento.innerHTML = `
                     <div class="col">
                         <div class="card">
-                            <button type="button" class="btn color1 text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
+                            <button type="button" class="btn colorPrincipal text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
                                 <img src="https://api.genshin.dev/enemies/${id}/icon" alt="" class="card-img img-fluid">
                                 <h5 class="card-title text-center mt-2">
                                     ${enemigo["name"]}
@@ -33,7 +33,7 @@ class Enemigo {
                     <div class="modal fade" id="flush-${key}" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
-                                <div class="modal-header color1">
+                                <div class="modal-header colorPrincipal">
                                     <h5 class="modal-title text-light">
                                         ${enemigo["name"]}
                                     </h5>
@@ -86,4 +86,3 @@ class Enemigo {
 }
 
 Enemigo.fetchFromAPI()
-// Falta completar

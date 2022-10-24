@@ -3,7 +3,7 @@ body {
     background-blend-mode: darken;
 }
 
-.color1 {
+.colorPrincipal {
     background: linear-gradient(180deg,
             rgb(14, 44, 83) 10%,
             rgb(30, 114, 187) 90%
@@ -31,6 +31,12 @@ body {
     width: 80%;
 }
 
+.img-center-character-index {
+    height: 500px;
+    object-fit: cover;
+    object-position: 50% 20%;
+}
+
 .img-center-weapon {
     height: 240px;
     object-fit: cover;
@@ -41,4 +47,10 @@ body {
     height: 210px;
     object-fit: cover;
     object-position: 50% 25%;
+}
+
+.border-nation {
+    background-color: rgba(231, 231, 231, 0.699);
+    border-top: 1px solid rgb(255, 242, 91);
+    border-bottom: 1px solid rgb(186, 160, 107);
 }

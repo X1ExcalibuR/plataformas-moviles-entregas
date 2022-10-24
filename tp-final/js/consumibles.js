@@ -2,7 +2,7 @@ class Consumible {
     constructor(){}
 
     static fetchFromAPI(){
-        let URL = 'https://api.genshin.dev/consumables/';
+        let URL = 'https://api.genshin.dev/consumables/food';
         fetch(URL)
         .then(response => response.json())
         .then(data => Consumible.renderConsumibleData(data))
@@ -10,22 +10,23 @@ class Consumible {
     }
 
     static renderConsumibleData(data){
-        let consumible = data;
+        let consumibleComida = data;
+        let consumiblePocion = data;
 
-        consumible.forEach((id, key) => {
-            let URL = `https://api.genshin.dev/consumables/${id}`;
+        consumibleComida.forEach((id, key) => {
+            let URL = `https://api.genshin.dev/consumables/food/`;
             fetch(URL)
             .then(response => response.json())
-            .then(consumible => {
-                console.log(consumible)
+            .then(consumibleComida => {
+                console.log(consumibleComida)
                 let contenedor = document.querySelector('#container-consumibles');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
                     <div class="col accordion accordion-flush">
                         <div class="card h-100">
-                            <div class="card-header color1 text-light">
+                            <div class="card-header colorPrincipal text-light">
                                 <h5 class="card-title text-center">
-                                    ${consumible["name"]}
+                                    ${consumibleComida["name"]}
                                 </h5>
                             </div>
                             <div class="accordion-item">
@@ -40,7 +41,7 @@ class Consumible {
                                             <b>
                                                 Rareza maxima:
                                             </b>
-                                            ${consumible["name"]}
+                                            ${consumibleComida["name"]}
                                         </li>
                                     </ul>
                                 </div>

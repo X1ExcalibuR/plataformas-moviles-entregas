@@ -24,9 +24,8 @@ class Material{
                     <div class="col accordion accordion-flush">
                         <div class="card h-100">
                             <img src="" class="card-img-top img-fluid img-center bg-light" alt="">
-                            <div class="card-header color1 text-light">
+                            <div class="card-header colorPrincipal text-light">
                                 <h5 class="card-title text-center">
-                                    ${material}
                                 </h5>
                             </div>
                             <div class="accordion-item">

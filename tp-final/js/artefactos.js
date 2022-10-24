@@ -1,3 +1,11 @@
+const colorBG = {
+    "1": "#77787A",
+    "2": "#528D78",
+    "3": "#5391B8",
+    "4": "#7D69A8",
+    "5": "#B67126"
+}
+
 class Artefacto {
     constructor(){}
 
@@ -23,7 +31,7 @@ class Artefacto {
                 elemento.innerHTML = `
                     <div class="col">
                         <div class="card">
-                            <button type="button" class="btn color1 text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
+                            <button type="button" class="btn colorPrincipal text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
                                 <img src="https://api.genshin.dev/artifacts/${id}/flower-of-life" alt="" class="card-img img-fluid img-center-character">
                                 <h5 class="card-title text-center mt-2">
                                     ${artefacto["name"]}
@@ -34,7 +42,7 @@ class Artefacto {
                     <div class="modal fade" id="flush-${key}" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
-                                <div class="modal-header color1">
+                                <div class="modal-header" style="background-color: ${colorBG[artefacto.max_rarity]};">
                                     <h5 class="modal-title text-light">
                                         ${artefacto["name"]}
                                     </h5>
