@@ -1,8 +1,37 @@
+const colorBG = {
+    "Discord": "#5865F2",
+    "Reddit": "#FF4500",
+    "Twitch": "#9147FF",
+    "Youtube": "#FF0000",
+    "Facebook": "#1977F3",
+    "Twitter": "#1D9BF0",
+    "Instagram": "#F04C5B"
+}
+
 const nacionFondo = {
     "Inazuma": "https://images7.alphacoders.com/118/1189484.jpg",
     "Liyue": "https://images.alphacoders.com/116/1169181.jpg",
     "Mondstadt": "https://images8.alphacoders.com/116/1169180.jpg"
 }
+
+function progressBarScroll() {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+        height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
+        scrolled = (winScroll / height) * 100;
+    document.getElementById("progressScroll").style.width = scrolled + "%";
+  }
+  
+window.onscroll = function () {
+    progressBarScroll();
+};
+
+let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
+let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
+let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
+let brandFooter4 = document.getElementById("brandFooter4").style.backgroundColor = colorBG["Youtube"];
+let brandFooter5 = document.getElementById("brandFooter5").style.backgroundColor = colorBG["Facebook"];
+let brandFooter6 = document.getElementById("brandFooter6").style.backgroundColor = colorBG["Twitter"];
+let brandFooter7 = document.getElementById("brandFooter7").style.backgroundColor = colorBG["Instagram"];
 
 class Nacion{
     constructor(){}
@@ -29,7 +58,8 @@ class Nacion{
                     <div class="card my-4 rounded-0">
                         <img src="${nacionFondo[nacion.name]}" alt="">
                         <div class="card-img-overlay text-light">
-                            <h1 class="card-title text-center">
+                        <h1 class="card-title text-center">
+                        <img src="https://api.genshin.dev/nations/${id}/icon" class="img-fluid w-25 float-start border-nation rounded-4">
                                 ${nacion["name"]}
                             </h1>
                         </div>

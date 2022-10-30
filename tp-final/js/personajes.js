@@ -5,8 +5,35 @@ const colorBG = {
     "Electro": "#7554C1",
     "Geo": "#DA973E",
     "Hydro": "#208FBA",
-    "Pyro": "#B72528"
+    "Pyro": "#B72528",
+
+    "Discord": "#5865F2",
+    "Reddit": "#FF4500",
+    "Twitch": "#9147FF",
+    "Youtube": "#FF0000",
+    "Facebook": "#1977F3",
+    "Twitter": "#1D9BF0",
+    "Instagram": "#F04C5B"
 }
+
+function progressBarScroll() {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+        height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
+        scrolled = (winScroll / height) * 100;
+    document.getElementById("progressScroll").style.width = scrolled + "%";
+  }
+  
+window.onscroll = function () {
+    progressBarScroll();
+};
+
+let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
+let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
+let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
+let brandFooter4 = document.getElementById("brandFooter4").style.backgroundColor = colorBG["Youtube"];
+let brandFooter5 = document.getElementById("brandFooter5").style.backgroundColor = colorBG["Facebook"];
+let brandFooter6 = document.getElementById("brandFooter6").style.backgroundColor = colorBG["Twitter"];
+let brandFooter7 = document.getElementById("brandFooter7").style.backgroundColor = colorBG["Instagram"];
 
 const vision = {
     "Anemo": "https://api.genshin.dev/elements/anemo/icon",
@@ -49,8 +76,8 @@ class Personaje{
                     <div class="col">
                         <div class="card">
                             <button type="button" class="btn colorPrincipal text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
-                                <img src="https://api.genshin.dev/characters/${id}/icon-big" alt="" class="card-img img-fluid img-center-character">
-                                <h5 class="card-title text-center mt-2">
+                                <img src="https://api.genshin.dev/characters/${id}/icon-big" onerror="this.onerror=null, this.src='https://api.genshin.dev/characters/${id}/icon-big-lumine'" alt="" class="card-img img-fluid img-center-character">
+                                <h5 class="card-title text-center mt-2 rounded-pill" style="background-color: ${colorBG[personaje.vision]};">
                                     ${personaje["name"]}
                                 </h5>
                             </button>
@@ -66,7 +93,7 @@ class Personaje{
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="https://api.genshin.dev/characters/${id}/card" alt="" class="img-fluid w-100 rounded">
+                                    <img src="https://api.genshin.dev/characters/${id}/card" alt="" class="img-fluid w-100 rounded" height"255">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <b>

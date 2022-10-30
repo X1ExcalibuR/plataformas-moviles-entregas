@@ -1,4 +1,14 @@
+@font-face {
+    font-family: 'hywenhei85w';
+    src: url('webfontkit/zh-cn-webfont.woff2') format('woff2'),
+         url('webfontkit/zh-cn-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
+    font-family: 'hywenhei85w';
     background-size: cover;
     background-blend-mode: darken;
 }
@@ -8,6 +18,28 @@ body {
             rgb(14, 44, 83) 10%,
             rgb(30, 114, 187) 90%
     );
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  
+.progress-container {
+    height: 5px;
+    width: 100%;
+}
+
+.progress-scroll {
+    background-color: rgb(14, 44, 83);
+    height: 5px;
+    width: 0%;
+}
+
+.titleIndex {
+    background-color: rgb(205, 170, 118);
 }
 
 .link-unline {

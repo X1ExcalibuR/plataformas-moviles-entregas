@@ -3,8 +3,35 @@ const colorBG = {
     "2": "#528D78",
     "3": "#5391B8",
     "4": "#7D69A8",
-    "5": "#B67126"
+    "5": "#B67126",
+
+    "Discord": "#5865F2",
+    "Reddit": "#FF4500",
+    "Twitch": "#9147FF",
+    "Youtube": "#FF0000",
+    "Facebook": "#1977F3",
+    "Twitter": "#1D9BF0",
+    "Instagram": "#F04C5B"
 }
+
+function progressBarScroll() {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+        height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
+        scrolled = (winScroll / height) * 100;
+    document.getElementById("progressScroll").style.width = scrolled + "%";
+  }
+  
+window.onscroll = function () {
+    progressBarScroll();
+};
+
+let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
+let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
+let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
+let brandFooter4 = document.getElementById("brandFooter4").style.backgroundColor = colorBG["Youtube"];
+let brandFooter5 = document.getElementById("brandFooter5").style.backgroundColor = colorBG["Facebook"];
+let brandFooter6 = document.getElementById("brandFooter6").style.backgroundColor = colorBG["Twitter"];
+let brandFooter7 = document.getElementById("brandFooter7").style.backgroundColor = colorBG["Instagram"];
 
 class Arma {
     constructor(){}
@@ -19,6 +46,10 @@ class Arma {
 
     static renderArmaData(data){
         let arma = data;
+        
+        arma = arma.sort((a,b) => {
+            return a.name < b.name
+        })
 
         arma.forEach((id, key) => {
             let URL = `https://api.genshin.dev/weapons/${id}`;
@@ -73,6 +104,12 @@ class Arma {
                                             Secundario:
                                         </b>
                                         ${arma["subStat"]}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>
+                                            Material de Asención:
+                                        </b>
+                                        ${arma["ascensionMaterial"]}
                                     </li>
                                     <li class="list-group-item">
                                         <b>
