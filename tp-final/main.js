@@ -1,3 +1,4 @@
+//Colores para fondos
 const colorBG = {
     "Anemo": "#299B90",
     "Cryo": "#83AADA",
@@ -16,17 +17,6 @@ const colorBG = {
     "Instagram": "#F04C5B"
 }
 
-function progressBarScroll() {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
-        height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
-        scrolled = (winScroll / height) * 100;
-    document.getElementById("progressScroll").style.width = scrolled + "%";
-  }
-  
-window.onscroll = function () {
-    progressBarScroll();
-};
-
 let personajesIndex1 = document.getElementById("personajesIndex1").style.backgroundColor = colorBG["Geo"];
 let personajesIndex2 = document.getElementById("personajesIndex2").style.backgroundColor = colorBG["Electro"];
 let personajesIndex3 = document.getElementById("personajesIndex3").style.backgroundColor = colorBG["Anemo"];
@@ -42,16 +32,48 @@ let brandFooter5 = document.getElementById("brandFooter5").style.backgroundColor
 let brandFooter6 = document.getElementById("brandFooter6").style.backgroundColor = colorBG["Twitter"];
 let brandFooter7 = document.getElementById("brandFooter7").style.backgroundColor = colorBG["Instagram"];
 
-/*
-Agregar scrolspy
+//Barra de progreso
+function progressBarScroll() {
+    let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
+        height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
+        scrolled = (winScroll / height) * 100;
+    document.getElementById("progressScroll").style.width = scrolled + "%";
+  }
+  
+window.onscroll = function () {
+    progressBarScroll();
+};
 
+//Boton hacia el principio
+let btnTop = document.getElementById("btn-back-to-top");
+
+window.onscroll = function () {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
+        btnTop.style.display = "block";
+    } else {
+        btnTop.style.display = "none";
+    }
+}
+
+btnTop.addEventListener("click", backToTop);
+
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+/*
 Armas: Arreglar imagenes
 Artefactos: Completo
-Consumibles: Arreglar todo
-Dominios: Hacer que se repitan
+Consumibles: Completo
+Dominios: Dejarlos mas bonitos
 Elementos: Hacer que se repitan
-Enemigos: Hacer que se repitan
-Materiales: Arreglar todo
+Enemigos: Completo
+Materiales: Corregir varias cosas
 Naciones: Completo
 Personajes: Completo
 */

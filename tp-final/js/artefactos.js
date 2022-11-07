@@ -1,3 +1,4 @@
+//Colores para fondos
 const colorBG = {
     "1": "#77787A",
     "2": "#528D78",
@@ -14,6 +15,15 @@ const colorBG = {
     "Instagram": "#F04C5B"
 }
 
+let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
+let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
+let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
+let brandFooter4 = document.getElementById("brandFooter4").style.backgroundColor = colorBG["Youtube"];
+let brandFooter5 = document.getElementById("brandFooter5").style.backgroundColor = colorBG["Facebook"];
+let brandFooter6 = document.getElementById("brandFooter6").style.backgroundColor = colorBG["Twitter"];
+let brandFooter7 = document.getElementById("brandFooter7").style.backgroundColor = colorBG["Instagram"];
+
+//Barra de progreso
 function progressBarScroll() {
     let winScroll = document.body.scrollTop || document.documentElement.scrollTop,
         height = document.documentElement.scrollHeight - document.documentElement.clientHeight,
@@ -25,13 +35,27 @@ window.onscroll = function () {
     progressBarScroll();
 };
 
-let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
-let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
-let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
-let brandFooter4 = document.getElementById("brandFooter4").style.backgroundColor = colorBG["Youtube"];
-let brandFooter5 = document.getElementById("brandFooter5").style.backgroundColor = colorBG["Facebook"];
-let brandFooter6 = document.getElementById("brandFooter6").style.backgroundColor = colorBG["Twitter"];
-let brandFooter7 = document.getElementById("brandFooter7").style.backgroundColor = colorBG["Instagram"];
+//Boton hacia el principio
+let btnTop = document.getElementById("btn-back-to-top");
+
+window.onscroll = function () {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
+        btnTop.style.display = "block";
+    } else {
+        btnTop.style.display = "none";
+    }
+}
+
+btnTop.addEventListener("click", backToTop);
+
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
 
 class Artefacto {
     constructor(){}
@@ -69,7 +93,7 @@ class Artefacto {
                     <div class="modal fade" id="flush-${key}" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
-                                <div class="modal-header" style="background-color: ${colorBG[artefacto.max_rarity]};">
+                                <div class="modal-header" style="background-color: ${colorBG[artefacto["max_rarity"]]};">
                                     <h5 class="modal-title text-light">
                                         ${artefacto["name"]}
                                     </h5>
@@ -102,34 +126,34 @@ class Artefacto {
                                             </b>
                                         </li>
                                         <li class="list-group-item">
+                                            <img src="https://api.genshin.dev/artifacts/${id}/flower-of-life" onerror="this.onerror=null, this.src='../IMG/Flower_of_Life.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                             <b>
                                                 Flower of Life
                                             </b>
-                                            <img src="https://api.genshin.dev/artifacts/${id}/flower-of-life" onerror="this.onerror=null, this.src='../IMG/Flower_of_Life.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
                                         <li class="list-group-item">
+                                            <img src="https://api.genshin.dev/artifacts/${id}/plume-of-death" onerror="this.onerror=null, this.src='../IMG/Plume_of_Death.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                             <b>
                                                 Plume of Death
                                             </b>
-                                            <img src="https://api.genshin.dev/artifacts/${id}/plume-of-death" onerror="this.onerror=null, this.src='../IMG/Plume_of_Death.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
                                         <li class="list-group-item">
+                                            <img src="https://api.genshin.dev/artifacts/${id}/sands-of-eon" onerror="this.onerror=null, this.src='../IMG/Sands_of_Eon.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                             <b>
                                                 Sands of Eon
                                             </b>
-                                            <img src="https://api.genshin.dev/artifacts/${id}/sands-of-eon" onerror="this.onerror=null, this.src='../IMG/Sands_of_Eon.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
                                         <li class="list-group-item">
+                                            <img src="https://api.genshin.dev/artifacts/${id}/goblet-of-eonothem" onerror="this.onerror=null, this.src='../IMG/Goblet_of_Eonothem.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                             <b>
                                                 Goblet of Eonothem
                                             </b>
-                                            <img src="https://api.genshin.dev/artifacts/${id}/goblet-of-eonothem" onerror="this.onerror=null, this.src='../IMG/Goblet_of_Eonothem.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
                                         <li class="list-group-item">
+                                            <img src="https://api.genshin.dev/artifacts/${id}/circlet-of-logos" onerror="this.onerror=null, this.src='../IMG/Circlet_of_Logos.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                             <b>
                                                 Circlet of Logos
                                             </b>
-                                            <img src="https://api.genshin.dev/artifacts/${id}/circlet-of-logos" onerror="this.onerror=null, this.src='../IMG/Circlet_of_Logos.webp'" class="img-fluid w-25 float-end bg-light" alt="">
                                         </li>
                                     </ul>
                                 </div>

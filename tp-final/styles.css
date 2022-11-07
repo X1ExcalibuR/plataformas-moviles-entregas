@@ -13,12 +13,20 @@ body {
     background-blend-mode: darken;
 }
 
+/*----------Colores----------*/
+
 .colorPrincipal {
     background: linear-gradient(180deg,
             rgb(14, 44, 83) 10%,
             rgb(30, 114, 187) 90%
     );
 }
+
+.colorSecundario {
+    background-color: rgb(205, 170, 118);
+}
+
+/*----------Barra de progreso----------*/
 
 .progress-bar {
     position: fixed;
@@ -38,9 +46,17 @@ body {
     width: 0%;
 }
 
-.titleIndex {
-    background-color: rgb(205, 170, 118);
+/*----------Boton hacia el principio----------*/
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    display: none;
+    z-index: 1;
 }
+
+/*----------Animacion de links----------*/
 
 .link-unline {
     display: inline-block;
@@ -62,6 +78,8 @@ body {
 .link-unline:hover:after {
     width: 80%;
 }
+
+/*----------Centrado de imagenes----------*/
 
 .img-center-character-index {
     height: 500px;
