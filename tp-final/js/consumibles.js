@@ -30,17 +30,9 @@ function progressBarScroll() {
         scrolled = (winScroll / height) * 100;
     document.getElementById("progressScroll").style.width = scrolled + "%";
   }
-  
-window.onscroll = function () {
-    progressBarScroll();
-};
 
 //Boton hacia el principio
 let btnTop = document.getElementById("btn-back-to-top");
-
-window.onscroll = function () {
-    scrollFunction();
-};
 
 function scrollFunction() {
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
@@ -50,12 +42,17 @@ function scrollFunction() {
     }
 }
 
-btnTop.addEventListener("click", backToTop);
-
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+btnTop.addEventListener("click", backToTop);
+
+window.onscroll = function () {
+    progressBarScroll()
+    scrollFunction();
+};
 
 class Consumible {
     constructor(){}

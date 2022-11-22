@@ -81,6 +81,12 @@ const talentBookTitle = {
     "light": "Light"
 }
 
+const talentBookSource = {
+    "forsaken-rift": "Forsaken Rift",
+    "taishan-mansion": "Taishan Mansion",
+    "violet-court": "Violet Court"
+}
+
 const talentBossIMG = {
     "dvalin's-plume": "dvalin-s-plume",
     "dvalin's-claw": "dvalin-s-claw",
@@ -116,6 +122,12 @@ const weaponAscensionIMG = {
     "mask-of-the-tiger's-bite": "mask-of-the-tiger-s-bite"
 }
 
+const weaponAscensionSource = {
+    "cecilia-garden": "Cecilia Garden",
+    "hidden-palace-of-lianshan": "Hidden Palace of Lianshan",
+    "court-of-flowing-sand": "Court of Flowing Sand"
+}
+
 let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
 let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
 let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
@@ -131,17 +143,9 @@ function progressBarScroll() {
         scrolled = (winScroll / height) * 100;
     document.getElementById("progressScroll").style.width = scrolled + "%";
   }
-  
-window.onscroll = function () {
-    progressBarScroll();
-};
 
 //Boton hacia el principio
 let btnTop = document.getElementById("btn-back-to-top");
-
-window.onscroll = function () {
-    scrollFunction();
-};
 
 function scrollFunction() {
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
@@ -151,12 +155,17 @@ function scrollFunction() {
     }
 }
 
-btnTop.addEventListener("click", backToTop);
-
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+btnTop.addEventListener("click", backToTop);
+
+window.onscroll = function () {
+    progressBarScroll()
+    scrollFunction();
+};
 
 class Material{
     constructor(){}
@@ -214,7 +223,7 @@ class Material{
         .catch(error => alert(error));
     }
 
-    static renderBossMaterialData(data){        //Arreglar
+    static renderBossMaterialData(data){
         let bossMaterial = data;
         let bossMaterial2 = Object.entries(bossMaterial)
         bossMaterial2.forEach((id, key) => {
@@ -252,6 +261,12 @@ class Material{
                                             </b>
                                             ${id[1]["source"]}
                                         </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -259,12 +274,15 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+                
+                let materialBossMaterialCharacters = id[1]["characters"]
+                console.log(id[1]["name"] + "\nPersonajes que lo emplean:\n" + materialBossMaterialCharacters)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderCharacterAscensionData(data){      //Arreglar
+    static renderCharacterAscensionData(data){
         let characterAscension = data;
         let characterAscension2 = Object.entries(characterAscension)
         characterAscension2.forEach((id, key) => {
@@ -311,8 +329,13 @@ class Material{
                                             <b>
                                                 Rareza:
                                             </b>
-                                            ${id[1]["sliver"]["rarity"]} 
+                                            ${id[1]["sliver"]["rarity"]}
                                             <i class="bi bi-stars"></i>
+                                            <br>
+                                            <b>
+                                                Fuentes:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/character-ascension/${id[1]["fragment"]["id"]}" class="img-fluid w-25 float-end rounded-4" style="background-color: ${colorBG[id[1]["fragment"]["rarity"]]};">
@@ -324,8 +347,13 @@ class Material{
                                             <b>
                                                 Rareza:
                                             </b>
-                                            ${id[1]["fragment"]["rarity"]} 
+                                            ${id[1]["fragment"]["rarity"]}
                                             <i class="bi bi-stars"></i>
+                                            <br>
+                                            <b>
+                                                Fuentes:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/character-ascension/${id[1]["chunk"]["id"]}" class="img-fluid w-25 float-end rounded-4" style="background-color: ${colorBG[id[1]["chunk"]["rarity"]]};">
@@ -337,8 +365,13 @@ class Material{
                                             <b>
                                                 Rareza:
                                             </b>
-                                            ${id[1]["chunk"]["rarity"]} 
+                                            ${id[1]["chunk"]["rarity"]}
                                             <i class="bi bi-stars"></i>
+                                            <br>
+                                            <b>
+                                                Fuentes:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/character-ascension/${id[1]["gemstone"]["id"]}" class="img-fluid w-25 float-end rounded-4" style="background-color: ${colorBG[id[1]["gemstone"]["rarity"]]};">
@@ -350,8 +383,13 @@ class Material{
                                             <b>
                                                 Rareza:
                                             </b>
-                                            ${id[1]["gemstone"]["rarity"]} 
+                                            ${id[1]["gemstone"]["rarity"]}
                                             <i class="bi bi-stars"></i>
+                                            <br>
+                                            <b>
+                                                Fuentes:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -360,12 +398,24 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+
+                let materialCharacterAscensionSliverSources = id[1]["sliver"]["sources"]
+                console.log(id[1]["sliver"]["name"] + "\nFuentes:\n" + materialCharacterAscensionSliverSources)
+                
+                let materialCharacterAscensionFragmentSources = id[1]["fragment"]["sources"]
+                console.log(id[1]["fragment"]["name"] + "\nFuentes:\n" + materialCharacterAscensionFragmentSources)
+
+                let materialCharacterAscensionChunkSources = id[1]["chunk"]["sources"]
+                console.log(id[1]["chunk"]["name"] + "\nFuentes:\n" + materialCharacterAscensionChunkSources)
+                
+                let materialCharacterAscensionGemstoneSources = id[1]["gemstone"]["sources"]
+                console.log(id[1]["gemstone"]["name"] + "\nFuentes:\n" + materialCharacterAscensionGemstoneSources)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderCharacterExperienceData(data){     //Completo
+    static renderCharacterExperienceData(data){
         let characterExperience = data;
         let characterExperience2 = Object.entries(characterExperience)
         let characterExperience3 = characterExperience2[0][1]
@@ -402,7 +452,7 @@ class Material{
                                             <b>
                                                 Experiencia:
                                             </b>
-                                            ${id["experience"]} exp
+                                            ${id["experience"]} Exp
                                         </li>
                                         <li class="list-group-item">
                                             <b>
@@ -422,7 +472,7 @@ class Material{
         });
     }
 
-    static renderCommonAscensionData(data){     //Arreglar
+    static renderCommonAscensionData(data){
         let commonAscension = data;
         let commonAscension2 = Object.entries(commonAscension)
         commonAscension2.forEach((id, key) => {
@@ -456,9 +506,27 @@ class Material{
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <b>
-                                                Experiencia:
+                                                Personajes:
                                             </b>
-                                            ${id}
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Armas:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Items:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Fuentes:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -467,12 +535,21 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+
+                let materialCommonAscensionCharacters = id[1]["characters"]
+                console.log(commonAscensionTitle[id[0]] + "\nPersonajes:\n" + materialCommonAscensionCharacters)
+                
+                let materialCommonAscensionSources = id[1]["sources"]
+                console.log(commonAscensionTitle[id[0]] + "\nFuentes:\n" + materialCommonAscensionSources)
+
+                let materialCommonAscensionWeapons = id[1]["weapons"]
+                console.log(commonAscensionTitle[id[0]] + "\nArmas:\n" + materialCommonAscensionWeapons)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderCookingIngredientsData(data){      //Arreglar
+    static renderCookingIngredientsData(data){
         let cookingIngredients = data;
         let cookingIngredients2 = Object.entries(cookingIngredients)
         cookingIngredients2.forEach((id, key) => {
@@ -510,6 +587,12 @@ class Material{
                                             </b>
                                             ${id[1]["description"]}
                                         </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Fuentes:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -517,12 +600,15 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+
+                let materialCookingIngredientsSources = id[1]["sources"]
+                console.log(id[1]["name"] + "\nFuentes:\n" + materialCookingIngredientsSources)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderLocalSpecialitiesData(data){       //Arreglar
+    static renderLocalSpecialitiesData(data){
         let localSpecialities = data;
         let localSpecialities2 = Object.entries(localSpecialities)
         localSpecialities2.forEach((id, key) => {
@@ -560,6 +646,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][0]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/local-specialties/${id[1][1]["id"]}" class="img-fluid w-25 float-end rounded-4">
@@ -567,6 +658,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][1]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/local-specialties/${id[1][2]["id"]}" class="img-fluid w-25 float-end rounded-4">
@@ -574,6 +670,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][2]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/local-specialties/${id[1][3]["id"]}" class="img-fluid w-25 float-end rounded-4">
@@ -581,6 +682,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][3]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/local-specialties/${id[1][4]["id"]}" class="img-fluid w-25 float-end rounded-4">
@@ -588,6 +694,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][4]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/local-specialties/${id[1][5]["id"]}" class="img-fluid w-25 float-end rounded-4">
@@ -595,6 +706,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][5]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/local-specialties/${id[1][6]["id"]}" class="img-fluid w-25 float-end rounded-4">
@@ -602,6 +718,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][6]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                         <li class="list-group-item">
                                             <img src="https://api.genshin.dev/materials/local-specialties/${id[1][7]["id"]}" class="img-fluid w-25 float-end rounded-4">
@@ -609,6 +730,11 @@ class Material{
                                                 Nombre:
                                             </b>
                                             ${id[1][7]["name"]}
+                                            <br>
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -617,12 +743,36 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+
+                let materialLocalSpecialities0Characters = id[1][0]["characters"]
+                console.log(id[1][0]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities0Characters)
+
+                let materialLocalSpecialities1Characters = id[1][1]["characters"]
+                console.log(id[1][1]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities1Characters)
+
+                let materialLocalSpecialities2Characters = id[1][2]["characters"]
+                console.log(id[1][2]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities2Characters)
+
+                let materialLocalSpecialities3Characters = id[1][3]["characters"]
+                console.log(id[1][3]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities3Characters)
+
+                let materialLocalSpecialities4Characters = id[1][4]["characters"]
+                console.log(id[1][4]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities4Characters)
+
+                let materialLocalSpecialities5Characters = id[1][5]["characters"]
+                console.log(id[1][5]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities5Characters)
+
+                let materialLocalSpecialities6Characters = id[1][6]["characters"]
+                console.log(id[1][6]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities6Characters)
+
+                let materialLocalSpecialities7Characters = id[1][7]["characters"]
+                console.log(id[1][7]["name"] + "\nPersonajes que lo emplean:\n" + materialLocalSpecialities7Characters)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderTalentBookData(data){       //Arreglar
+    static renderTalentBookData(data){
         let talentBook = data;
         let talentBook2 = Object.entries(talentBook)
         talentBook2.forEach((id, key) => {
@@ -700,9 +850,21 @@ class Material{
                                         </li>
                                         <li class="list-group-item">
                                             <b>
+                                                Disponible:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Personajes que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
                                                 Origen:
                                             </b>
-                                                ${id[1]["source"]}
+                                                ${talentBookSource[id[1]["source"]]}
                                         </li>
                                     </ul>
                                 </div>
@@ -711,12 +873,18 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+                
+                let materialTalentBookAvailability = id[1]["availability"]
+                console.log(talentBookTitle[id[0]] + "\nDisponible:\n" + materialTalentBookAvailability)
+
+                let materialTalentBookCharacters = id[1]["characters"]
+                console.log(talentBookTitle[id[0]] + "\nPersonajes que lo emplean:\n" + materialTalentBookCharacters)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderTalentBossData(data){       //Arreglar
+    static renderTalentBossData(data){
         let talentBoss = data;
         let talentBoss2 = Object.entries(talentBoss)
         talentBoss2.forEach((id, key) => {
@@ -750,8 +918,9 @@ class Material{
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <b>
-                                                Personajes que lo utilizan
+                                                Personajes que lo emplean:
                                             </b>
+                                            <span class="text-muted">Leer consola</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -760,12 +929,15 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+
+                let materialTalentBossCharacters = id[1]["characters"]
+                console.log(id[1]["name"] + "\nPersonajes que lo emplean:\n" + materialTalentBossCharacters)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderWeaponAscensionData(data){       //Arreglar
+    static renderWeaponAscensionData(data){
         let weaponAscension = data;
         let weaponAscension2 = Object.entries(weaponAscension)
         weaponAscension2.forEach((id, key) => {
@@ -856,9 +1028,21 @@ class Material{
                                         </li>
                                         <li class="list-group-item">
                                             <b>
+                                                Disponible:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
+                                                Armas que lo emplean:
+                                            </b>
+                                            <span class="text-muted">Leer consola</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>
                                                 Origen:
                                             </b>
-                                                ${id[1]["source"]}
+                                                ${weaponAscensionSource[id[1]["source"]]}
                                         </li>
                                     </ul>
                                 </div>
@@ -867,16 +1051,21 @@ class Material{
                     </div>
                 `;
                 contenedor.appendChild(elemento)
+
+                let materialWeaponAscensionAvailability = id[1]["availability"]
+                console.log(weaponAscensionTitle[id[0]] + "\nDisponible:\n" + materialWeaponAscensionAvailability)
+
+                let materialWeaponAsecensionCharacters = id[1]["weapons"]
+                console.log(weaponAscensionTitle[id[0]] + "\Armas que lo emplean:\n" + materialWeaponAsecensionCharacters)
             })
             .catch(error => alert(error));
         });
     }
 
-    static renderWeaponExperienceData(data){       //Completo
+    static renderWeaponExperienceData(data){
         let weaponExperience = data;
         let weaponExperience2 = Object.entries(weaponExperience)
         let weaponExperience3 = weaponExperience2[0][1]
-        
         weaponExperience3.forEach((id, key) => {
             let URL = `https://api.genshin.dev/materials/weapon-experience`;
             fetch(URL)
@@ -926,4 +1115,3 @@ class Material{
 }
 
 Material.fetchFromAPI()
-// Ver apartados por sector

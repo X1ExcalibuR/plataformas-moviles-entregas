@@ -32,17 +32,9 @@ function progressBarScroll() {
         scrolled = (winScroll / height) * 100;
     document.getElementById("progressScroll").style.width = scrolled + "%";
   }
-  
-window.onscroll = function () {
-    progressBarScroll();
-};
 
 //Boton hacia el principio
 let btnTop = document.getElementById("btn-back-to-top");
-
-window.onscroll = function () {
-    scrollFunction();
-};
 
 function scrollFunction() {
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
@@ -52,12 +44,17 @@ function scrollFunction() {
     }
 }
 
-btnTop.addEventListener("click", backToTop);
-
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+btnTop.addEventListener("click", backToTop);
+
+window.onscroll = function () {
+    progressBarScroll()
+    scrollFunction();
+};
 
 class Elemento {
     constructor(){}
@@ -66,29 +63,26 @@ class Elemento {
         let URL = 'https://api.genshin.dev/elements/';
         fetch(URL)
         .then(response => response.json())
-        .then(data => Elemento.renderElementoData(data))
+        .then(data => {Elemento.renderElementoData(data)})
         .catch(error => alert(error));
     }
 
     static renderElementoData(data){
-        let elemento2 = data;
-
-        elemento2.forEach((id, key) => {
+        let elementoGI = data;
+        elementoGI.forEach((id, key) => {
             let URL = `https://api.genshin.dev/elements/${id}`;
             fetch(URL)
             .then(response => response.json())
-            .then(elemento2 => {
-                let elemento3 = Object.entries(elemento2)
-                console.log(elemento3)
+            .then(elementoGI => {
                 let contenedor = document.querySelector('#container-elementos');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
                     <div class="col-md-8 col-sm-10 col-12 offset-md-2 offset-sm-1">
                         <div class="card">
-                            <button type="button" class="btn text-light" style="background-color: ${colorBG[elemento2.name]};" data-bs-toggle="modal" data-bs-target="#flush-${key}">
+                            <button type="button" class="btn text-light" style="background-color: ${colorBG[elementoGI.name]};" data-bs-toggle="modal" data-bs-target="#flush-${key}">
                                 <img src="https://api.genshin.dev/elements/${id}/icon" class="img-fluid float-end bg-light m-2 rounded-4" width="64px" height="64px" alt="">
                                 <h5 class="card-title text-start ms-3 my-4">
-                                    ${elemento3[0][1]}
+                                    ${elementoGI.name}
                                 </h5>
                             </button>
                         </div>
@@ -96,33 +90,18 @@ class Elemento {
                     <div class="modal fade" id="flush-${key}" tabindex="-1">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div class="modal-content">
-                                <div class="modal-header" style="background-color: ${colorBG[elemento2.name]};">
+                                <div class="modal-header" style="background-color: ${colorBG[elementoGI.name]};">
                                     <h5 class="modal-title text-light">
-                                        ${elemento3[0][1]}
+                                        ${elementoGI.name}
                                     </h5>
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <ul class="list-group list-group-flush">
+                                    <ul id="container-reacciones-${elementoGI.name}" class="list-group list-group-flush">
                                         <li class="list-group-item text-center">
                                             <b>
                                                 Reacciones
                                             </b>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>
-                                                Nombre:
-                                            </b>
-                                            ${elemento3[2][1][0]["name"]}
-                                            <br>
-                                            <b>
-                                                Combinado con:
-                                            </b>
-                                            <br>
-                                            <b>
-                                                Descripción:
-                                            </b>
-                                            ${elemento3[2][1][0]["description"]}
                                         </li>
                                     </ul>
                                 </div>
@@ -130,7 +109,44 @@ class Elemento {
                         </div>
                     </div>
                 `;
-                contenedor.appendChild(elemento)
+                contenedor.appendChild(elemento);
+
+                let elementoReaccion = elementoGI["reactions"]
+                elementoReaccion.forEach((id, key) => {
+                    let contenedor2 = document.getElementById(`container-reacciones-${elementoGI.name}`);
+                    let elemento2 = document.createElement("div");
+                    elemento2.innerHTML = `
+                        <li class="list-group-item">
+                            <b>
+                                Nombre:
+                            </b>
+                            ${elementoReaccion[key]["name"]}
+                            <br>
+                            <b>
+                                Combinado con:
+                            </b>
+                            <span class="text-muted">Leer consola</span>
+                            <div id="container-reacciones-elemento-${elementoGI.name}"></div>
+                            <br>
+                            <b>
+                                Descripción:
+                            </b>
+                            ${elementoReaccion[key]["description"]}
+                        </li>
+                    `;
+                    contenedor2.appendChild(elemento2);
+                });
+
+                let elementoReaccionElemento = elementoReaccion[0]["elements"]
+                console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento)
+                /*elementoReaccionElemento.forEach((id, key) =>{
+                    let contenedor3 = document.getElementById(`container-reacciones-elemento-${elementoGI.name}`);
+                    let elemento3 = document.createElement("div");
+                    elemento3.innerHTML = `
+                        ${elementoReaccionElemento[key]}
+                    `;
+                    contenedor3.appendChild(elemento3);
+                })*/
             })
             .catch(error => alert(error));
         });

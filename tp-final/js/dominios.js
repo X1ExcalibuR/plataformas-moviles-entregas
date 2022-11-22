@@ -9,6 +9,13 @@ const colorBG = {
     "Instagram": "#F04C5B"
 }
 
+const domainIMG = {
+    "Cecilia Garden": "https://static.wikia.nocookie.net/gensin-impact/images/f/fb/Domain_Cecilia_Garden.png",
+    "Domain of Guyun": "https://static.wikia.nocookie.net/gensin-impact/images/e/e3/Domain_of_Guyun.png",
+    "Hidden Palace of Lianshan Formula": "https://static.wikia.nocookie.net/gensin-impact/images/6/6f/Domain_Hidden_Palace_of_Lianshan_Formula.png",
+    "Midsummer Courtyard": "https://static.wikia.nocookie.net/gensin-impact/images/2/28/Domain_Midsummer_Courtyard.png"
+}
+
 let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
 let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
 let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
@@ -24,17 +31,9 @@ function progressBarScroll() {
         scrolled = (winScroll / height) * 100;
     document.getElementById("progressScroll").style.width = scrolled + "%";
   }
-  
-window.onscroll = function () {
-    progressBarScroll();
-};
 
 //Boton hacia el principio
 let btnTop = document.getElementById("btn-back-to-top");
-
-window.onscroll = function () {
-    scrollFunction();
-};
 
 function scrollFunction() {
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
@@ -44,12 +43,17 @@ function scrollFunction() {
     }
 }
 
-btnTop.addEventListener("click", backToTop);
-
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+btnTop.addEventListener("click", backToTop);
+
+window.onscroll = function () {
+    progressBarScroll()
+    scrollFunction();
+};
 
 class Dominio {
     constructor(){}
@@ -70,7 +74,6 @@ class Dominio {
             fetch(URL)
             .then(response => response.json())
             .then(dominio => {
-                console.log(key)
                 let contenedor = document.querySelector('#container-dominios');
                 let elemento = document.createElement("div")
                 elemento.innerHTML = `
@@ -94,6 +97,7 @@ class Dominio {
                                 </div>
                                 <div class="modal-body">
                                     <ul class="list-group list-group-flush">
+                                        <img src="${domainIMG[dominio["name"]]}" alt="">
                                         <li class="list-group-item">
                                             <b>
                                                 Descripción:
@@ -126,5 +130,3 @@ class Dominio {
 }
 
 Dominio.fetchFromAPI()
-
-//Necesita arreglo

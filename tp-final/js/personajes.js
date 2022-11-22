@@ -27,10 +27,18 @@ const vision = {
     "Pyro": "https://api.genshin.dev/elements/pyro/icon"
 }
 
-const nacionIcono = {
+const nationIcon = {
     "Inazuma": "https://api.genshin.dev/nations/inazuma/icon",
     "Liyue": "https://api.genshin.dev/nations/liyue/icon",
     "Mondstadt": "https://api.genshin.dev/nations/mondstadt/icon"
+}
+
+const weaponTypeIcon = {
+    "Bow": "Bow.png",
+    "Catalyst": "Catalyst.png",
+    "Claymore": "Claymore.png",
+    "Polearm": "Polearm.png",
+    "Sword": "Sword.png"
 }
 
 let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
@@ -48,17 +56,9 @@ function progressBarScroll() {
         scrolled = (winScroll / height) * 100;
     document.getElementById("progressScroll").style.width = scrolled + "%";
   }
-  
-window.onscroll = function () {
-    progressBarScroll();
-};
 
 //Boton hacia el principio
 let btnTop = document.getElementById("btn-back-to-top");
-
-window.onscroll = function () {
-    scrollFunction();
-};
 
 function scrollFunction() {
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
@@ -68,12 +68,17 @@ function scrollFunction() {
     }
 }
 
-btnTop.addEventListener("click", backToTop);
-
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+btnTop.addEventListener("click", backToTop);
+
+window.onscroll = function () {
+    progressBarScroll()
+    scrollFunction();
+};
 
 class Personaje{
     constructor(){}
@@ -117,7 +122,7 @@ class Personaje{
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="https://api.genshin.dev/characters/${id}/card" alt="" class="img-fluid w-100 rounded" height"255">
+                                    <img src="https://api.genshin.dev/characters/${id}/card" class="img-fluid w-100 rounded" height"255">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <img src="${vision[personaje["vision"]]}" class="img-fluid float-end rounded-4" style="background-color: ${colorBG[personaje["vision"]]};">
@@ -127,13 +132,14 @@ class Personaje{
                                             ${personaje["vision"]}
                                         </li>
                                         <li class="list-group-item">
+                                            <img src="../IMG/${weaponTypeIcon[personaje["weapon"]]}" class="img-fluid w-25 float-end border-nation rounded-4">    
                                             <b>
                                                 Arma:
                                             </b>
                                             ${personaje["weapon"]}
                                         </li>
                                         <li class="list-group-item">
-                                            <img src="${nacionIcono[personaje["nation"]]}" class="img-fluid w-25 float-end border-nation rounded-4">
+                                            <img src="${nationIcon[personaje["nation"]]}" class="img-fluid w-25 float-end border-nation rounded-4">
                                             <b>
                                                 Nación:
                                             </b>
@@ -160,6 +166,7 @@ class Personaje{
                                             <i class="bi bi-stars"></i>
                                         </li>
                                     </ul>
+                                    <img src="https://api.genshin.dev/characters/${id}/gacha-splash" class="img-fluid w-100 border-nation rounded" height"255">
                                 </div>
                             </div>
                         </div>

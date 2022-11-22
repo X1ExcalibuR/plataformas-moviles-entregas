@@ -15,6 +15,38 @@ const colorBG = {
     "Instagram": "#F04C5B"
 }
 
+const weaponTypeIcon = {
+    "Bow": "Bow.png",
+    "Catalyst": "Catalyst.png",
+    "Claymore": "Claymore.png",
+    "Polearm": "Polearm.png",
+    "Sword": "Sword.png"
+}
+
+const weaponAscensionMaterialIMG = {
+    "decarabian": "https://api.genshin.dev/materials/weapon-ascension/scattered-piece-of-decarabian-s-dream",
+    "boreal": "https://api.genshin.dev/materials/weapon-ascension/boreal-wolf-s-nostalgia",
+    "dandelion": "https://api.genshin.dev/materials/weapon-ascension/dream-of-the-dandelion-gladiator",
+    "guyun": "https://api.genshin.dev/materials/weapon-ascension/divine-body-from-guyun",
+    "elixir": "https://api.genshin.dev/materials/weapon-ascension/mist-veiled-primo-elixir",
+    "aerosiderite": "https://api.genshin.dev/materials/weapon-ascension/chunk-of-aerosiderite",
+    "distantant-sea": "https://api.genshin.dev/materials/weapon-ascension/golden-branch-of-a-distant-sea",
+    "narukami": "https://api.genshin.dev/materials/weapon-ascension/narukami-s-valor",
+    "mask": "https://api.genshin.dev/materials/weapon-ascension/mask-of-the-kijin"
+}
+
+const weaponAscensionMaterialTitle = {
+    "decarabian": "Decarabian",
+    "boreal": "Boreal",
+    "dandelion": "Dandelion",
+    "guyun": "Guyun",
+    "elixir": "Elixir",
+    "aerosiderite": "Aerosiderite",
+    "distantant-sea": "Distant Sea",
+    "narukami": "Narukami",
+    "mask": "Mask"
+}
+
 let brandFooter1 = document.getElementById("brandFooter1").style.backgroundColor = colorBG["Discord"];
 let brandFooter2 = document.getElementById("brandFooter2").style.backgroundColor = colorBG["Reddit"];
 let brandFooter3 = document.getElementById("brandFooter3").style.backgroundColor = colorBG["Twitch"];
@@ -30,17 +62,9 @@ function progressBarScroll() {
         scrolled = (winScroll / height) * 100;
     document.getElementById("progressScroll").style.width = scrolled + "%";
   }
-  
-window.onscroll = function () {
-    progressBarScroll();
-};
 
 //Boton hacia el principio
 let btnTop = document.getElementById("btn-back-to-top");
-
-window.onscroll = function () {
-    scrollFunction();
-};
 
 function scrollFunction() {
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400 && window.innerWidth >= 768) {
@@ -50,13 +74,17 @@ function scrollFunction() {
     }
 }
 
-btnTop.addEventListener("click", backToTop);
-
 function backToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
 
+btnTop.addEventListener("click", backToTop);
+
+window.onscroll = function () {
+    progressBarScroll()
+    scrollFunction();
+};
 
 class Arma {
     constructor(){}
@@ -87,7 +115,7 @@ class Arma {
                 <div class="col">
                     <div class="card">
                         <button type="button" class="btn colorPrincipal text-light" data-bs-toggle="modal" data-bs-target="#flush-${key}">
-                            <img src="https://api.genshin.dev/weapons/${id}/icon" alt="" class="card-img img-fluid img-center-weapon">
+                            <img src="https://api.genshin.dev/weapons/${id}/icon" onerror="this.onerror=null, this.src='../IMG/${weaponTypeIcon[arma["type"]]}'" class="card-img img-fluid img-center-weapon">
                             <h5 class="card-title text-center mt-2">
                                 ${arma["name"]}
                             </h5>
@@ -106,6 +134,7 @@ class Arma {
                             <div class="modal-body">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
+                                        <img src="../IMG/${weaponTypeIcon[arma["type"]]}" class="img-fluid w-25 float-end border-nation rounded-4">
                                         <b>
                                             Tipo:
                                         </b>
@@ -131,10 +160,11 @@ class Arma {
                                         ${arma["subStat"]}
                                     </li>
                                     <li class="list-group-item">
+                                        <img src="${weaponAscensionMaterialIMG[arma["ascensionMaterial"]]}" class="img-fluid w-25 float-end rounded-4">
                                         <b>
                                             Material de Asención:
                                         </b>
-                                        ${arma["ascensionMaterial"]}
+                                        ${weaponAscensionMaterialTitle[arma["ascensionMaterial"]]}
                                     </li>
                                     <li class="list-group-item">
                                         <b>
