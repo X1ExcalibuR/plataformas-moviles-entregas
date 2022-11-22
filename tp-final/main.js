@@ -62,15 +62,3 @@ window.onscroll = function () {
     progressBarScroll()
     scrollFunction();
 };
-
-/*
-Armas: Arreglar imagenes
-Artefactos: Completo
-Consumibles: Completo
-Dominios: Dejarlos mas bonitos
-Elementos: Hacer que se repitan
-Enemigos: Completo
-Materiales: Corregir varias cosas
-Naciones: Completo
-Personajes: Completo
-*/
