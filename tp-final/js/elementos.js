@@ -127,7 +127,7 @@ class Elemento {
                                 Combinado con:
                             </b>
                             <br>
-                            ${elementoReaccionElemento.join("\n")}
+                            ${elementoReaccionElemento.join("<br>")}
                             <br>
                             <b>
                                 Descripción:
