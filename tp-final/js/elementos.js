@@ -135,7 +135,7 @@ class Elemento {
                             ${elementoReaccion[key]["description"]}
                         </li>
                     `;
-                    console.log(elementoReaccionElemento);
+                    console.log("bbbbb", elementoReaccionElemento);
                     console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento);    
                     contenedor2.appendChild(elemento2);
                 });
