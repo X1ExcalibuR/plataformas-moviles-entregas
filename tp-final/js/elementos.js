@@ -134,11 +134,14 @@ class Elemento {
                             ${elementoReaccion[key]["description"]}
                         </li>
                     `;
+                    let elementoReaccionElemento = elementoReaccion[key]["elements"]
+                    elementoReaccionElemento.forEach((id, key) => {
+                        console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento)    
+                        contenedor2.appendChild(elemento2);
+                    })
                     contenedor2.appendChild(elemento2);
                 });
 
-                let elementoReaccionElemento = elementoReaccion[0]["elements"]
-                console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento)
                 /*elementoReaccionElemento.forEach((id, key) =>{
                     let contenedor3 = document.getElementById(`container-reacciones-elemento-${elementoGI.name}`);
                     let elemento3 = document.createElement("div");
