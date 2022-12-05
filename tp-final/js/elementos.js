@@ -115,6 +115,7 @@ class Elemento {
                 elementoReaccion.forEach((id, key) => {
                     let contenedor2 = document.getElementById(`container-reacciones-${elementoGI.name}`);
                     let elemento2 = document.createElement("div");
+                    let elementoReaccionElemento = elementoReaccion[key]["elements"]
                     elemento2.innerHTML = `
                         <li class="list-group-item">
                             <b>
@@ -125,7 +126,8 @@ class Elemento {
                             <b>
                                 Combinado con:
                             </b>
-                            <span class="text-muted">Leer consola</span>
+                            ${elementoReaccionElemento}
+                            <span id="sub-elemento" class="text-muted">Leer consola</span>
                             <div id="container-reacciones-elemento-${elementoGI.name}"></div>
                             <br>
                             <b>
@@ -134,8 +136,7 @@ class Elemento {
                             ${elementoReaccion[key]["description"]}
                         </li>
                     `;
-                    let elementoReaccionElemento = elementoReaccion[key]["elements"]
-                    console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento)
+                    console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento)    
                     contenedor2.appendChild(elemento2);
                 });
 
