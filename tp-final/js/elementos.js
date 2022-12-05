@@ -116,7 +116,6 @@ class Elemento {
                     let contenedor2 = document.getElementById(`container-reacciones-${elementoGI.name}`);
                     let elemento2 = document.createElement("div");
                     let elementoReaccionElemento = elementoReaccion[key]["elements"]
-                    console.log("aaaaaaaa", elementoReaccionElemento);
                     elemento2.innerHTML = `
                         <li class="list-group-item">
                             <b>
@@ -135,7 +134,6 @@ class Elemento {
                             ${elementoReaccion[key]["description"]}
                         </li>
                     `;
-                    console.log("bbbbb", elementoReaccionElemento);
                     console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento);    
                     contenedor2.appendChild(elemento2);
                 });
