@@ -126,7 +126,8 @@ class Elemento {
                             <b>
                                 Combinado con:
                             </b>
-                            ${elementoReaccionElemento}
+                            <br>
+                            ${elementoReaccionElemento.join("\n")}
                             <br>
                             <b>
                                 Descripción:
@@ -134,7 +135,7 @@ class Elemento {
                             ${elementoReaccion[key]["description"]}
                         </li>
                     `;
-                    console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento);    
+                    console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento);
                     contenedor2.appendChild(elemento2);
                 });
 
@@ -146,5 +147,3 @@ class Elemento {
 }
 
 Elemento.fetchFromAPI();
-
-// Falta completar
