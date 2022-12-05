@@ -126,8 +126,7 @@ class Elemento {
                             <b>
                                 Combinado con:
                             </b>
-                            ${elementoReaccionElemento}
-                            <span id="sub-elemento" class="text-muted">Leer consola</span>
+                            ${elementoReaccionElemento}, 
                             <div id="container-reacciones-elemento-${elementoGI.name}"></div>
                             <br>
                             <b>
