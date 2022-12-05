@@ -134,10 +134,8 @@ class Elemento {
                             ${elementoReaccion[key]["description"]}
                         </li>
                     `;
-                    let elementoReaccionElemento = elementoReaccion[key]["elements"]
-                    elementoReaccionElemento.forEach((id, key) => {
-                        console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento)
-                    })
+                    let elementoReaccionElemento = elementoReaccion["elements"]
+                    console.log(elementoGI["name"] + "\nCombinado con:\n"  + elementoReaccionElemento)
                     contenedor2.appendChild(elemento2);
                 });
 
